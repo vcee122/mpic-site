@@ -4,30 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MPIC Financial Services</title>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MPIC Financial Services</title>
 
   <style>
-    /* -------- Base -------- */
+    /* -------- Theme -------- */
     :root{
-      --ink:#1a1a1a;          /* main text */
-      --muted:#666;           /* secondary text */
-      --accent:#caa23a;       /* gold accent */
-      --accent-dark:#a8841e;  /* button hover */
-      --border:#eaeaea;       /* light lines */
+      --ink:#141414;      /* main text */
+      --muted:#666;       /* secondary text */
+      --accent:#f58220;   /* gold/orange accent for buttons */
+      --border:#e8e8e8;   /* light lines */
     }
 
     html,body{ margin:0; padding:0; }
     body{
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--ink);
-      background:#ffffff;   /* <- all white background */
-      line-height:1.55;
+      background:#fff;      /* ALL WHITE background */
+      line-height:1.65;
     }
+
     img{ max-width:100%; height:auto; display:block; }
     a{ color:var(--ink); text-decoration:none; }
     .container{ max-width:1100px; margin:0 auto; padding:24px; }
@@ -37,43 +31,50 @@
       padding:32px 0 8px;
       border-bottom:1px solid var(--border);
     }
-    .brand{
-      font-weight:700; letter-spacing:.5px;
-      font-size:22px;
+    .brand{ font-weight:700; letter-spacing:.5px; font-size:22px; }
+
+    .hero-wrap{
+      display:grid; grid-template-columns: 1.8fr .9fr; gap:28px; align-items:center;
     }
-    .hero-wrap{ display:grid; grid-template-columns: 1.2fr .8fr; gap:28px; align-items:center; }
-    .kicker{ color:var(--muted); text-transform:uppercase; letter-spacing:.12em; font-size:12px; margin-bottom:8px; }
+    .kicker{ color:var(--muted); text-transform:uppercase; letter-spacing:.14em; font-size:12px; }
     .h1{ font-size:44px; line-height:1.1; margin:6px 0 8px; }
-    .tag{ color:var(--muted); font-size:16px; margin:0 0 18px; }
+    .tag{ color:var(--muted); font-size:16px; margin:8px 0 18px; }
 
     .cta{
       display:inline-block; padding:14px 22px; border-radius:8px;
       background:var(--accent); color:#fff; font-weight:700;
-      box-shadow:0 2px 0 rgba(0,0,0,.06);
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
     }
-    .cta:hover{ background:var(--accent-dark); }
+    .cta:hover{ filter:brightness(.95); }
 
-    .card{
-      background:#fff; border:1px solid var(--border); border-radius:14px; padding:18px;
-      box-shadow:0 2px 14px rgba(0,0,0,.03);
-    }
     .rounded{ border-radius:14px; }
 
     /* -------- Sections -------- */
-    section{ padding:34px 0; }
+    section{ padding:38px 0; }
     h2{ font-size:28px; margin:0 0 8px; }
-    p{ margin:8px 0; }
+    p{ margin:8px 0; color:#2b2b2b; }
 
-    /* Pricing */
-    .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-    .price h3{ margin:0 0 6px; font-size:18px; }
-    .pill{ display:inline-block; font-size:12px; padding:6px 10px; border:1px solid var(--border); border-radius:999px; color:var(--muted); }
+    /* About grid */
+    .about-grid{
+      display:grid; grid-template-columns: 1fr 1fr; gap:26px;
+    }
+    .note{
+      background:#fff6d8; border:1px solid #f3e4ac;
+      padding:18px; border-radius:12px;
+    }
 
-    /* About blocks */
-    .about-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:26px; }
+    /* Reviews */
+    .reviews{ background:#fafafa; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .rev-grid{
+      display:grid; grid-template-columns: 1fr 1fr; gap:22px;
+    }
+    .card{
+      border:1px solid var(--border); border-radius:12px; padding:18px; background:#fff;
+    }
+    .name{ font-weight:700; margin-bottom:6px; }
+    .meta{ color:var(--muted); font-size:13px; }
 
-    /* Contact */
-    .contact p{ margin:6px 0; }
+    /* Contact & footer */
     footer{
       border-top:1px solid var(--border);
       padding:24px 0; color:#777; font-size:14px; text-align:center;
@@ -81,7 +82,7 @@
 
     /* Mobile */
     @media (max-width: 820px){
-      .hero-wrap, .about-grid, .grid-2{ grid-template-columns:1fr; }
+      .hero-wrap, .about-grid, .rev-grid{ grid-template-columns:1fr; }
       .h1{ font-size:34px; }
     }
   </style>
@@ -92,6 +93,7 @@
   <header class="hero">
     <div class="container">
       <div class="brand">MPIC Financial Services</div>
+
       <div class="hero-wrap">
         <div>
           <div class="kicker">Ready to file?</div>
@@ -100,10 +102,8 @@
           <a class="cta" href="https://www.cognitoforms.com/MPICTaxSolutions/StartYour2025TaxFilingWithMPIC" target="_blank" rel="noopener">Start Filing Now</a>
         </div>
 
-        <!-- Your main photo (you can swap to IMG_1845.jpeg or IMG_1846.jpeg) -->
-        <div class="card">
-          <img class="rounded" src="IMG_1829.jpeg" alt="Victoria Conley — MPIC Financial Services">
-        </div>
+        <!-- CHANGE MAIN PHOTO HERE: swap IMG_1829.jpeg with IMG_1845.jpeg or IMG_1846.jpeg -->
+        <div><img class="rounded" src="IMG_1829.jpeg" alt="Victoria Conley — MPIC Financial Services"></div>
       </div>
     </div>
   </header>
@@ -116,220 +116,58 @@
         <p>MPIC Financial Services helps individuals and business owners take control of their finances through professional tax services, business setup, and credit education. We’re more than a company — we’re a movement for financial independence.</p>
       </div>
 
-      <div class="card">
-        <h2 style="margin-top:0;">Meet Victoria Conley</h2>
-        <p><strong>Victoria Conley</strong> is the Founder and CEO of <strong>MPIC Financial Services</strong> — a woman on a mission to help people build wealth, confidence, and stability through financial education, credit repair, and professional tax preparation. Starting from humble beginnings, she built MPIC from the ground up, mentoring others and creating real opportunities for everyday people to grow into business owners. Her passion, faith, and consistency continue to drive the MPIC system for success.</p>
+      <div class="note">
+        <h3 style="margin:0 0 6px;">Meet Victoria Conley</h3>
+        <p>Victoria Conley is the Founder and CEO of <strong>MPIC Financial Services</strong> — a woman on a mission to help people build wealth, confidence, and stability through financial education, credit repair, and professional tax preparation. Starting from humble beginnings, she built MPIC from the ground up, mentoring others and creating real opportunities for everyday people to grow into business owners. Her passion, faith, and consistency continue to drive the MPIC system for success.</p>
       </div>
     </div>
   </section>
 
-  <!-- Transparent Pricing (simple, honest) -->
-  <section style="background:#fafafa;">
+  <!-- Reviews -->
+  <section class="reviews" id="reviews">
     <div class="container">
-      <h2>Tax Filing Rate Transparency</h2>
-      <p class="pill">Fees below are tax preparation fees and do not include software or bank fees.</p>
-      <div class="grid-2" style="margin-top:16px;">
-        <div class="card price">
-          <h3>Personal Returns</h3>
-          <p><strong>Individual:</strong> $309</p>
-          <p><strong>Students:</strong> $199</p>
-          <p><strong>Married:</strong> $459+</p>
-          <p>+ $25 for each dependent<br>+ $25 for each added W-2</p>
-        </div>
-        <div class="card price">
-          <h3>Self-Employed</h3>
-          <p><strong>Individual:</strong> $399+</p>
-          <p><strong>Married:</strong> $599+</p>
-          <p>+ $25 for each dependent<br>+ $25 for each added W-2</p>
-        </div>
-      </div>
+      <h2>Client Reviews</h2>
+      <div class="rev-grid">
 
-      <div style="margin-top:18px;">
-        <a class="cta" href="https://www.cognitoforms.com/MPICTaxSolutions/StartYour2025TaxFilingWithMPIC" target="_blank" rel="noopener">Start Your Return</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Optional promo banner (replace the src with any promo graphic URL or another repo image) -->
-  <!-- <section>
-    <div class="container">
-      <img class="rounded" src="IMG_1845.jpeg" alt="MPIC Promotion">
-    </div>
-  </section> -->
-
-  <!-- Contact -->
-  <section>
-    <div class="container card contact">
-      <h2>Contact Us</h2>
-      <p>📞 817-713-2944</p>
-      <p>✉️ mpicllc@outlook.com</p>
-      <p>🕘 Mon–Fri: 10am–7pm</p>
-    </div>
-  </section>
-
-  <footer>
-    © 2025 MPIC Financial Services. All rights reserved.
-  </footer>
-</body>
-</html>
-  <style>
-    /* -------- Base -------- */
-    :root{
-      --ink:#1a1a1a;          /* main text */
-      --muted:#666;           /* secondary text */
-      --accent:#caa23a;       /* gold accent */
-      --accent-dark:#a8841e;  /* button hover */
-      --border:#eaeaea;       /* light lines */
-    }
-
-    html,body{ margin:0; padding:0; }
-    body{
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--ink);
-      background:#ffffff;   /* <- all white background */
-      line-height:1.55;
-    }
-    img{ max-width:100%; height:auto; display:block; }
-    a{ color:var(--ink); text-decoration:none; }
-    .container{ max-width:1100px; margin:0 auto; padding:24px; }
-
-    /* -------- Header / Hero -------- */
-    .hero{
-      padding:32px 0 8px;
-      border-bottom:1px solid var(--border);
-    }
-    .brand{
-      font-weight:700; letter-spacing:.5px;
-      font-size:22px;
-    }
-    .hero-wrap{ display:grid; grid-template-columns: 1.2fr .8fr; gap:28px; align-items:center; }
-    .kicker{ color:var(--muted); text-transform:uppercase; letter-spacing:.12em; font-size:12px; margin-bottom:8px; }
-    .h1{ font-size:44px; line-height:1.1; margin:6px 0 8px; }
-    .tag{ color:var(--muted); font-size:16px; margin:0 0 18px; }
-
-    .cta{
-      display:inline-block; padding:14px 22px; border-radius:8px;
-      background:var(--accent); color:#fff; font-weight:700;
-      box-shadow:0 2px 0 rgba(0,0,0,.06);
-    }
-    .cta:hover{ background:var(--accent-dark); }
-
-    .card{
-      background:#fff; border:1px solid var(--border); border-radius:14px; padding:18px;
-      box-shadow:0 2px 14px rgba(0,0,0,.03);
-    }
-    .rounded{ border-radius:14px; }
-
-    /* -------- Sections -------- */
-    section{ padding:34px 0; }
-    h2{ font-size:28px; margin:0 0 8px; }
-    p{ margin:8px 0; }
-
-    /* Pricing */
-    .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-    .price h3{ margin:0 0 6px; font-size:18px; }
-    .pill{ display:inline-block; font-size:12px; padding:6px 10px; border:1px solid var(--border); border-radius:999px; color:var(--muted); }
-
-    /* About blocks */
-    .about-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:26px; }
-
-    /* Contact */
-    .contact p{ margin:6px 0; }
-    footer{
-      border-top:1px solid var(--border);
-      padding:24px 0; color:#777; font-size:14px; text-align:center;
-    }
-
-    /* Mobile */
-    @media (max-width: 820px){
-      .hero-wrap, .about-grid, .grid-2{ grid-template-columns:1fr; }
-      .h1{ font-size:34px; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Top / Hero -->
-  <header class="hero">
-    <div class="container">
-      <div class="brand">MPIC Financial Services</div>
-      <div class="hero-wrap">
-        <div>
-          <div class="kicker">Ready to file?</div>
-          <div class="h1">Get Your Highest Refund</div>
-          <p class="tag">Professional Tax Preparation • Credit Repair • Business Structuring</p>
-          <a class="cta" href="https://www.cognitoforms.com/MPICTaxSolutions/StartYour2025TaxFilingWithMPIC" target="_blank" rel="noopener">Start Filing Now</a>
-        </div>
-
-        <!-- Your main photo (you can swap to IMG_1845.jpeg or IMG_1846.jpeg) -->
         <div class="card">
-          <img class="rounded" src="IMG_1829.jpeg" alt="Victoria Conley — MPIC Financial Services">
+          <div class="name">Belen Garcia</div>
+          <div class="meta">via Facebook</div>
+          <p>“Victoria was absolutely amazing throughout the entire process! Her assistance made everything so much easier. I can’t recommend her highly enough for all your tax needs. She’s a true gem!”</p>
         </div>
-      </div>
-    </div>
-  </header>
 
-  <!-- About MPIC -->
-  <section>
-    <div class="container about-grid">
-      <div>
-        <h2>About MPIC</h2>
-        <p>MPIC Financial Services helps individuals and business owners take control of their finances through professional tax services, business setup, and credit education. We’re more than a company — we’re a movement for financial independence.</p>
-      </div>
+        <div class="card">
+          <div class="name">Felicity Amber</div>
+          <div class="meta">via Facebook</div>
+          <p>“Highly recommend! She got me my biggest refund yet — fast, accurate, and explains everything there is to know. She’ll definitely be my go-to from here on out!”</p>
+        </div>
 
-      <div class="card">
-        <h2 style="margin-top:0;">Meet Victoria Conley</h2>
-        <p><strong>Victoria Conley</strong> is the Founder and CEO of <strong>MPIC Financial Services</strong> — a woman on a mission to help people build wealth, confidence, and stability through financial education, credit repair, and professional tax preparation. Starting from humble beginnings, she built MPIC from the ground up, mentoring others and creating real opportunities for everyday people to grow into business owners. Her passion, faith, and consistency continue to drive the MPIC system for success.</p>
+        <div class="card">
+          <div class="name">Apolonia Hernandez</div>
+          <div class="meta">via Facebook</div>
+          <p>“Amazing!! Explained everything thoroughly and efficiently. Thank you!!!”</p>
+        </div>
+
+        <div class="card">
+          <div class="name">Danielle Ortiz</div>
+          <div class="meta">via Facebook</div>
+          <p>“Victoria made the whole process easy from beginning to end. I definitely recommend her to anyone looking for a tax specialist.”</p>
+        </div>
+
       </div>
     </div>
   </section>
-
-  <!-- Transparent Pricing (simple, honest) -->
-  <section style="background:#fafafa;">
-    <div class="container">
-      <h2>Tax Filing Rate Transparency</h2>
-      <p class="pill">Fees below are tax preparation fees and do not include software or bank fees.</p>
-      <div class="grid-2" style="margin-top:16px;">
-        <div class="card price">
-          <h3>Personal Returns</h3>
-          <p><strong>Individual:</strong> $309</p>
-          <p><strong>Students:</strong> $199</p>
-          <p><strong>Married:</strong> $459+</p>
-          <p>+ $25 for each dependent<br>+ $25 for each added W-2</p>
-        </div>
-        <div class="card price">
-          <h3>Self-Employed</h3>
-          <p><strong>Individual:</strong> $399+</p>
-          <p><strong>Married:</strong> $599+</p>
-          <p>+ $25 for each dependent<br>+ $25 for each added W-2</p>
-        </div>
-      </div>
-
-      <div style="margin-top:18px;">
-        <a class="cta" href="https://www.cognitoforms.com/MPICTaxSolutions/StartYour2025TaxFilingWithMPIC" target="_blank" rel="noopener">Start Your Return</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Optional promo banner (replace the src with any promo graphic URL or another repo image) -->
-  <!-- <section>
-    <div class="container">
-      <img class="rounded" src="IMG_1845.jpeg" alt="MPIC Promotion">
-    </div>
-  </section> -->
 
   <!-- Contact -->
   <section>
-    <div class="container card contact">
+    <div class="container">
       <h2>Contact Us</h2>
-      <p>📞 817-713-2944</p>
-      <p>✉️ mpicllc@outlook.com</p>
-      <p>🕘 Mon–Fri: 10am–7pm</p>
+      <p>📞 817-713-2944<br>✉️ mpicllc@outlook.com<br>🕙 Mon–Fri: 10am–7pm</p>
     </div>
   </section>
 
   <footer>
     © 2025 MPIC Financial Services. All rights reserved.
   </footer>
+
 </body>
 </html>
