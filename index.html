@@ -101,7 +101,107 @@
       </div>
     </div>
   </header>
+<!-- 🌟 MPIC Holiday Refund Estimator Section -->
+<section id="holiday-refund-estimator" style="padding: 3rem 1.5rem; background: linear-gradient(135deg,#fef6e4,#ffe9f0); text-align:center; border-radius: 18px; max-width: 900px; margin: 2rem auto; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
+  <h2 style="font-size: 2rem; margin-bottom: 0.25rem; font-weight: 800; color:#176b4d;">
+    Unwrap Your Holiday Refund 🎁
+  </h2>
+  <p style="margin: 0 0 1.5rem; font-size: 1rem; color:#333;">
+    Get a quick, <strong>free refund estimate</strong> in under 60 seconds.
+    Then I’ll run the exact numbers for you inside MPIC Tax Software.
+  </p>
 
+  <!-- Estimator card -->
+  <div style="background:#ffffff; border-radius: 16px; padding: 1.75rem 1.5rem; max-width: 650px; margin: 0 auto; text-align:left; box-shadow: 0 6px 18px rgba(0,0,0,0.04);">
+    <!-- Income -->
+    <label for="income" style="display:block; font-weight:600; margin-bottom:0.35rem; font-size:0.95rem;">
+      Estimated total income for the year
+    </label>
+    <input type="number" id="income" placeholder="Example: 35000" style="width:100%; padding:0.7rem 0.8rem; border-radius:10px; border:1px solid #d9d9d9; margin-bottom:1rem; font-size:0.95rem;">
+
+    <!-- Dependents -->
+    <label for="dependents" style="display:block; font-weight:600; margin-bottom:0.35rem; font-size:0.95rem;">
+      How many dependents will you claim?
+    </label>
+    <select id="dependents" style="width:100%; padding:0.7rem 0.8rem; border-radius:10px; border:1px solid #d9d9d9; margin-bottom:1rem; font-size:0.95rem;">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5+</option>
+    </select>
+
+    <!-- Filing status -->
+    <label for="status" style="display:block; font-weight:600; margin-bottom:0.35rem; font-size:0.95rem;">
+      Filing status
+    </label>
+    <select id="status" style="width:100%; padding:0.7rem 0.8rem; border-radius:10px; border:1px solid #d9d9d9; margin-bottom:1.3rem; font-size:0.95rem;">
+      <option value="single">Single</option>
+      <option value="hoh">Head of Household</option>
+      <option value="mfj">Married Filing Joint</option>
+    </select>
+
+    <!-- Result bar -->
+    <div style="background:#f6faf8; border-radius:12px; padding:0.9rem 1rem; margin-bottom:1.1rem; display:flex; justify-content:space-between; align-items:center;">
+      <div>
+        <div style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.06em; color:#777; font-weight:600;">Estimated Refund</div>
+        <div id="refundAmount" style="font-size:1.4rem; font-weight:800; color:#176b4d; margin-top:0.2rem;">
+          $0
+        </div>
+      </div>
+      <div style="font-size:0.8rem; max-width:180px; color:#555;">
+        Rough estimate only. I’ll confirm the final amount after your full intake. 💚
+      </div>
+    </div>
+
+    <!-- CTA button -->
+    <button id="refundCta" style="width:100%; padding:0.95rem 1rem; border:none; border-radius:999px; background:linear-gradient(135deg,#176b4d,#ff7c2a); color:#fff; font-size:1rem; font-weight:700; cursor:pointer; margin-bottom:0.6rem;">
+      Get My Exact Refund Estimate →
+    </button>
+
+    <p style="font-size:0.78rem; color:#777; margin:0;">
+      By tapping the button, you’ll be taken to my secure intake form so I can lock in your exact numbers.
+    </p>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const incomeInput = document.getElementById('income');
+    const depSelect   = document.getElementById('dependents');
+    const statusSelect = document.getElementById('status');
+    const refundAmount = document.getElementById('refundAmount');
+    const refundCta    = document.getElementById('refundCta');
+
+    function formatMoney(value) {
+      return '$' + Number(value).toLocaleString();
+    }
+
+    function calculateEstimate() {
+      const income = Number(incomeInput.value) || 0;
+      let deps = Number(depSelect.value) || 0;
+      if (depSelect.value === '5') deps = 5; // 5+
+
+      // Simple, friendly estimate formula (NOT tax advice)
+      let basePercent = 0.08; // 8% base
+      if (statusSelect.value === 'hoh') basePercent = 0.1;
+      if (statusSelect.value === 'mfj') basePercent = 0.09;
+
+      let est = income * basePercent + deps * 1200;
+
+      // Keep the estimate in a reasonable range
+      if (est < 0) est = 0;
+      if (est > 12000) est = 12000;
+
+      refundAmount.textContent = formatMoney(Math.round(est));
+    }
+
+    incomeInput.addEventListener('input', calculateEstimate);
+    depSelect.addEventListener('change', calculateEstimate);
+    statusSelect.addEventListener('change', calculateEstimate);
+
+    refundCta.addEventListener('click', function
   <!-- About MPIC -->
   <section>
     <div class="container about-grid">
