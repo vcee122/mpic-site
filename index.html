@@ -2,267 +2,527 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MPIC Financial Services</title>
 
   <style>
-    /* -------- Base -------- */
+    /* ---------- Base ---------- */
     :root{
-      --ink:#1a1a1a;          /* main text */
-      --muted:#666;           /* secondary text */
-      --accent:#caa23a;       /* gold accent */
-      --accent-dark:#a8841e;  /* button hover */
-      --border:#eaeaea;       /* light lines */
+      --ink:#111111;    /* main text */
+      --muted:#666666;  /* secondary text */
+      --border:#e5e5e5; /* light lines */
+      --accent:#000000; /* button + headings */
     }
 
-    html,body{ margin:0; padding:0; }
+    html,body{
+      margin:0;
+      padding:0;
+    }
+
     body{
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--ink);
-      background:#ffffff;   /* <- all white background */
-      line-height:1.55;
+      background:#ffffff;   /* all white background */
+      line-height:1.6;
     }
-    img{ max-width:100%; height:auto; display:block; }
-    a{ color:var(--ink); text-decoration:none; }
-    .container{ max-width:1100px; margin:0 auto; padding:24px; }
 
-    /* -------- Header / Hero -------- */
+    img{
+      max-width:100%;
+      height:auto;
+      display:block;
+    }
+
+    a{
+      color:var(--ink);
+      text-decoration:none;
+    }
+
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+      padding:24px 16px 64px;
+    }
+
+    /* ---------- Header / Hero ---------- */
     .hero{
-      padding:32px 0 8px;
+      padding:32px 0 24px;
       border-bottom:1px solid var(--border);
     }
+
     .brand{
-      font-weight:700; letter-spacing:.5px;
-      font-size:22px;
+      font-weight:700;
+      letter-spacing:4px;
+      font-size:18px;
+      text-transform:uppercase;
     }
-    .hero-wrap{ display:grid; grid-template-columns: 1.2fr .8fr; gap:28px; align-items:center; }
-    .kicker{ color:var(--muted); text-transform:uppercase; letter-spacing:.12em; font-size:12px; margin-bottom:8px; }
-    .h1{ font-size:44px; line-height:1.1; margin:6px 0 8px; }
-    .tag{ color:var(--muted); font-size:16px; margin:0 0 18px; }
 
-    .cta{
-      display:inline-block; padding:14px 22px; border-radius:8px;
-      background:var(--accent); color:#fff; font-weight:700;
-      box-shadow:0 2px 0 rgba(0,0,0,.06);
+    .hero-wrap{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap:32px;
+      align-items:center;
+      margin-top:24px;
     }
-    .cta:hover{ background:var(--accent-dark); }
 
-    .card{
-      background:#fff; border:1px solid var(--border); border-radius:14px; padding:18px;
-      box-shadow:0 2px 14px rgba(0,0,0,.03);
+    .kicker{
+      text-transform:uppercase;
+      letter-spacing:0.18em;
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:8px;
     }
-    .rounded{ border-radius:14px; }
 
-    /* -------- Sections -------- */
-    section{ padding:34px 0; }
-    h2{ font-size:28px; margin:0 0 8px; }
-    p{ margin:8px 0; }
+    .h1{
+      font-size:40px;
+      margin:0 0 8px;
+    }
 
-    /* Pricing */
-    .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-    .price h3{ margin:0 0 6px; font-size:18px; }
-    .pill{ display:inline-block; font-size:12px; padding:6px 10px; border:1px solid var(--border); border-radius:999px; color:var(--muted); }
+    .tagline{
+      font-size:14px;
+      color:var(--muted);
+      margin-bottom:20px;
+    }
 
-    /* About blocks */
-    .about-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:26px; }
+    .hero-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:16px;
+    }
 
-    /* Contact */
-    .contact p{ margin:6px 0; }
-    footer{
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 22px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:600;
+      border:1px solid var(--accent);
+      cursor:pointer;
+      text-decoration:none;
+      transition:background 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-primary{
+      background:var(--accent);
+      color:#ffffff;
+    }
+
+    .btn-primary:hover{
+      background:#333333;
+    }
+
+    .btn-outline{
+      background:#ffffff;
+      color:var(--accent);
+    }
+
+    .btn-outline:hover{
+      background:#f4f4f4;
+    }
+
+    .hero-note{
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .hero-photo-card{
+      border-radius:16px;
+      border:1px solid var(--border);
+      overflow:hidden;
+      box-shadow:0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    .hero-photo-card img{
+      display:block;
+      width:100%;
+    }
+
+    /* ---------- Estimator ---------- */
+    .section{
+      padding:40px 0 24px;
+      border-bottom:1px solid var(--border);
+    }
+
+    .section-title{
+      font-size:24px;
+      margin:0 0 8px;
+    }
+
+    .section-sub{
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:20px;
+    }
+
+    .estimator{
+      background:#fafafa;
+      border-radius:16px;
+      border:1px solid var(--border);
+      padding:24px 20px 20px;
+      max-width:640px;
+    }
+
+    .field-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .field{
+      flex:1 1 160px;
+      min-width:0;
+    }
+
+    label{
+      display:block;
+      font-size:12px;
+      font-weight:600;
+      margin-bottom:4px;
+    }
+
+    input[type="number"],
+    select{
+      width:100%;
+      padding:9px 10px;
+      border-radius:8px;
+      border:1px solid var(--border);
+      font-size:14px;
+      box-sizing:border-box;
+    }
+
+    .estimate-result{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:12px 0 4px;
+      font-size:14px;
       border-top:1px solid var(--border);
-      padding:24px 0; color:#777; font-size:14px; text-align:center;
+      margin-top:12px;
+      margin-bottom:12px;
     }
 
-    /* Mobile */
+    .estimate-number{
+      font-size:22px;
+      font-weight:700;
+    }
+
+    .estimate-note{
+      font-size:11px;
+      color:var(--muted);
+      max-width:260px;
+      text-align:right;
+    }
+
+    .estimator-cta{
+      margin-top:4px;
+    }
+
+    .fine-print{
+      font-size:10px;
+      color:var(--muted);
+      margin-top:8px;
+    }
+
+    /* ---------- About ---------- */
+    .two-col{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap:24px;
+      align-items:flex-start;
+    }
+
+    .lead{
+      font-size:14px;
+      margin-bottom:10px;
+    }
+
+    /* ---------- Reviews ---------- */
+    .reviews-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+      margin-top:12px;
+    }
+
+    .review-card{
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:14px 12px;
+      background:#ffffff;
+      font-size:13px;
+    }
+
+    .review-name{
+      font-weight:600;
+      margin-bottom:4px;
+    }
+
+    .review-stars{
+      font-size:11px;
+      color:#f2b01e;
+      margin-bottom:6px;
+    }
+
+    /* ---------- Footer ---------- */
+    footer{
+      padding:18px 16px 32px;
+      font-size:12px;
+      color:var(--muted);
+      text-align:center;
+      border-top:1px solid var(--border);
+      margin-top:16px;
+    }
+
+    footer a{
+      color:var(--ink);
+      text-decoration:underline;
+    }
+
+    /* ---------- Mobile ---------- */
     @media (max-width: 820px){
-      .hero-wrap, .about-grid, .grid-2{ grid-template-columns:1fr; }
-      .h1{ font-size:34px; }
+      .hero-wrap,
+      .two-col{
+        grid-template-columns:1fr;
+      }
+
+      .hero-wrap{
+        gap:20px;
+      }
+
+      .h1{
+        font-size:32px;
+      }
+
+      .container{
+        padding:20px 16px 40px;
+      }
+
+      .estimator{
+        padding:20px 16px 18px;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="container">
 
-  <!-- Top / Hero -->
-  <header class="hero">
-    <div class="container">
+    <!-- ===== Hero ===== -->
+    <header class="hero">
       <div class="brand">MPIC Financial Services</div>
+
       <div class="hero-wrap">
         <div>
           <div class="kicker">Ready to file?</div>
-          <div class="h1">Get Your Highest Refund</div>
-          <p class="tag">Professional Tax Preparation • Credit Repair • Business Structuring</p>
-          <a class="cta" href="https://www.cognitoforms.com/MPICTaxSolutions/StartYour2025TaxFilingWithMPIC" target="_blank" rel="noopener">Start Filing Now</a>
+          <h1 class="h1">Get Your Highest Refund</h1>
+          <p class="tagline">
+            Professional Tax Preparation · Credit Repair · Business Structuring
+          </p>
+
+          <div class="hero-buttons">
+            <!-- Tax filing button -->
+            <a class="btn btn-primary"
+               href="https://www.cognitoforms.com/MPICTaxSolutions/StartYour2025TaxFilingWithMPIC"
+               target="_blank" rel="noopener">
+              Start Filing Now
+            </a>
+
+            <!-- Credit repair button -->
+            <a class="btn btn-outline"
+               href="https://www.cognitoforms.com/MPICTaxSolutions/CreditCleanUpEnrollmentForm"
+               target="_blank" rel="noopener">
+              Fix My Credit
+            </a>
+          </div>
+
+          <p class="hero-note">
+            Secure online intake. Upload your documents, sign, and file without leaving home.
+          </p>
         </div>
 
-        <!-- Your main photo (you can swap to IMG_1845.jpeg or IMG_1846.jpeg) -->
-        <div class="card">
-          <img class="rounded" src="IMG_1829.jpeg" alt="Victoria Conley — MPIC Financial Services">
+        <!-- Main photo (swap the file name if you use a different image) -->
+        <div class="hero-photo-card">
+          <img src="IMG_1829.jpeg"
+               alt="Victoria Conley – MPIC Financial Services">
         </div>
       </div>
-    </div>
-  </header>
-<!-- 🌟 MPIC Holiday Refund Estimator Section -->
-<section id="holiday-refund-estimator" style="padding: 3rem 1.5rem; background: linear-gradient(135deg,#fef6e4,#ffe9f0); text-align:center; border-radius: 18px; max-width: 900px; margin: 2rem auto; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
-  <h2 style="font-size: 2rem; margin-bottom: 0.25rem; font-weight: 800; color:#176b4d;">
-    Unwrap Your Holiday Refund 🎁
-  </h2>
-  <p style="margin: 0 0 1.5rem; font-size: 1rem; color:#333;">
-    Get a quick, <strong>free refund estimate</strong> in under 60 seconds.
-    Then I’ll run the exact numbers for you inside MPIC Tax Software.
-  </p>
+    </header>
 
-  <!-- Estimator card -->
-  <div style="background:#ffffff; border-radius: 16px; padding: 1.75rem 1.5rem; max-width: 650px; margin: 0 auto; text-align:left; box-shadow: 0 6px 18px rgba(0,0,0,0.04);">
-    <!-- Income -->
-    <label for="income" style="display:block; font-weight:600; margin-bottom:0.35rem; font-size:0.95rem;">
-      Estimated total income for the year
-    </label>
-    <input type="number" id="income" placeholder="Example: 35000" style="width:100%; padding:0.7rem 0.8rem; border-radius:10px; border:1px solid #d9d9d9; margin-bottom:1rem; font-size:0.95rem;">
+    <!-- ===== Refund Estimator ===== -->
+    <section class="section" id="estimate">
+      <h2 class="section-title">Unwrap Your Holiday Refund</h2>
+      <p class="section-sub">
+        Get a quick <strong>free refund estimate</strong> in under 60 seconds.  
+        Then I’ll run the exact numbers for you inside MPIC Tax Software.
+      </p>
 
-    <!-- Dependents -->
-    <label for="dependents" style="display:block; font-weight:600; margin-bottom:0.35rem; font-size:0.95rem;">
-      How many dependents will you claim?
-    </label>
-    <select id="dependents" style="width:100%; padding:0.7rem 0.8rem; border-radius:10px; border:1px solid #d9d9d9; margin-bottom:1rem; font-size:0.95rem;">
-      <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5+</option>
-    </select>
+      <div class="estimator">
+        <div class="field-row">
+          <div class="field">
+            <label for="income">Estimated total income for the year</label>
+            <input type="number" id="income" placeholder="Example: 35000" min="0" step="500" />
+          </div>
 
-    <!-- Filing status -->
-    <label for="status" style="display:block; font-weight:600; margin-bottom:0.35rem; font-size:0.95rem;">
-      Filing status
-    </label>
-    <select id="status" style="width:100%; padding:0.7rem 0.8rem; border-radius:10px; border:1px solid #d9d9d9; margin-bottom:1.3rem; font-size:0.95rem;">
-      <option value="single">Single</option>
-      <option value="hoh">Head of Household</option>
-      <option value="mfj">Married Filing Joint</option>
-    </select>
+          <div class="field">
+            <label for="dependents">How many dependents will you claim?</label>
+            <input type="number" id="dependents" value="0" min="0" step="1" />
+          </div>
 
-    <!-- Result bar -->
-    <div style="background:#f6faf8; border-radius:12px; padding:0.9rem 1rem; margin-bottom:1.1rem; display:flex; justify-content:space-between; align-items:center;">
-      <div>
-        <div style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.06em; color:#777; font-weight:600;">Estimated Refund</div>
-        <div id="refundAmount" style="font-size:1.4rem; font-weight:800; color:#176b4d; margin-top:0.2rem;">
-          $0
+          <div class="field">
+            <label for="status">Filing status</label>
+            <select id="status">
+              <option value="single">Single</option>
+              <option value="hoh">Head of Household</option>
+              <option value="married">Married Filing Jointly</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" type="button" onclick="calculateEstimate()">
+          Calculate My Estimate
+        </button>
+
+        <div class="estimate-result">
+          <div>
+            <div>Estimated refund</div>
+            <div id="estimateNumber" class="estimate-number">$0</div>
+          </div>
+          <div class="estimate-note">
+            Rough estimate only. I’ll confirm the final amount after your full intake and document review.
+          </div>
+        </div>
+
+        <div class="estimator-cta">
+          <a class="btn btn-outline"
+             href="https://www.cognitoforms.com/MPICTaxSolutions/StartYour2025TaxFilingWithMPIC"
+             target="_blank" rel="noopener">
+            Get My Exact Refund Estimate →
+          </a>
+        </div>
+
+        <div class="fine-print">
+          This calculator is for illustration only and does not guarantee your actual refund.
+          Real results depend on your full tax situation, credits, deductions, and IRS rules.
         </div>
       </div>
-      <div style="font-size:0.8rem; max-width:180px; color:#555;">
-        Rough estimate only. I’ll confirm the final amount after your full intake. 💚
+    </section>
+
+    <!-- ===== About ===== -->
+    <section class="section" id="about">
+      <div class="two-col">
+        <div>
+          <h2 class="section-title">About MPIC</h2>
+          <p class="lead">
+            MPIC Financial Services helps individuals and business owners take control of their
+            finances through professional tax services, business setup, and credit education.
+          </p>
+          <p class="lead">
+            We’re more than a company — we’re a movement for financial independence.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="section-title" style="font-size:18px;">Meet Victoria Conley</h3>
+          <p class="lead">
+            Victoria Conley is the Founder and CEO of MPIC Financial Services — a woman on a
+            mission to help people build wealth, confidence, and stability through financial
+            education, credit repair, and professional tax preparation.
+          </p>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- CTA button -->
-    <button id="refundCta" style="width:100%; padding:0.95rem 1rem; border:none; border-radius:999px; background:linear-gradient(135deg,#176b4d,#ff7c2a); color:#fff; font-size:1rem; font-weight:700; cursor:pointer; margin-bottom:0.6rem;">
-      Get My Exact Refund Estimate →
-    </button>
+    <!-- ===== Reviews ===== -->
+    <section class="section" id="reviews">
+      <h2 class="section-title">What Clients Say</h2>
+      <p class="section-sub">
+        Real reviews from real MPIC clients who trusted us with their taxes.
+      </p>
 
-    <p style="font-size:0.78rem; color:#777; margin:0;">
-      By tapping the button, you’ll be taken to my secure intake form so I can lock in your exact numbers.
-    </p>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-name">Belen G.</div>
+          <div class="review-stars">★★★★★</div>
+          <p>
+            “Victoria was amazing throughout the entire process. She made everything so much easier and
+            I can’t recommend her enough for all your tax needs.”
+          </p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-name">Felicity A.</div>
+          <div class="review-stars">★★★★★</div>
+          <p>
+            “She got me my biggest refund yet, explains everything there is to know, and the process
+            is fast and accurate. She’ll definitely be my go-to from here on out.”
+          </p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-name">Apolonia H.</div>
+          <div class="review-stars">★★★★★</div>
+          <p>
+            “Amazing! Explained everything thoroughly and efficiently. Thank you!”
+          </p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-name">Danielle O.</div>
+          <div class="review-stars">★★★★★</div>
+          <p>
+            “Victoria made the whole process easy from beginning to end.
+            I’d definitely recommend her to anyone looking for a tax specialist.”
+          </p>
+        </div>
+      </div>
+    </section>
   </div>
-</section>
-
-<script>
-  (function () {
-    const incomeInput = document.getElementById('income');
-    const depSelect   = document.getElementById('dependents');
-    const statusSelect = document.getElementById('status');
-    const refundAmount = document.getElementById('refundAmount');
-    const refundCta    = document.getElementById('refundCta');
-
-    function formatMoney(value) {
-      return '$' + Number(value).toLocaleString();
-    }
-
-    function calculateEstimate() {
-      const income = Number(incomeInput.value) || 0;
-      let deps = Number(depSelect.value) || 0;
-      if (depSelect.value === '5') deps = 5; // 5+
-
-      // Simple, friendly estimate formula (NOT tax advice)
-      let basePercent = 0.08; // 8% base
-      if (statusSelect.value === 'hoh') basePercent = 0.1;
-      if (statusSelect.value === 'mfj') basePercent = 0.09;
-
-      let est = income * basePercent + deps * 1200;
-
-      // Keep the estimate in a reasonable range
-      if (est < 0) est = 0;
-      if (est > 12000) est = 12000;
-
-      refundAmount.textContent = formatMoney(Math.round(est));
-    }
-
-    incomeInput.addEventListener('input', calculateEstimate);
-    depSelect.addEventListener('change', calculateEstimate);
-    statusSelect.addEventListener('change', calculateEstimate);
-
-    refundCta.addEventListener('click', function
-  <!-- About MPIC -->
-  <section>
-    <div class="container about-grid">
-      <div>
-        <h2>About MPIC</h2>
-        <p>MPIC Financial Services helps individuals and business owners take control of their finances through professional tax services, business setup, and credit education. We’re more than a company — we’re a movement for financial independence.</p>
-      </div>
-
-      <div class="card">
-        <h2 style="margin-top:0;">Meet Victoria Conley</h2>
-        <p><strong>Victoria Conley</strong> is the Founder and CEO of <strong>MPIC Financial Services</strong> — a woman on a mission to help people build wealth, confidence, and stability through financial education, credit repair, and professional tax preparation. Starting from humble beginnings, she built MPIC from the ground up, mentoring others and creating real opportunities for everyday people to grow into business owners. Her passion, faith, and consistency continue to drive the MPIC system for success.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Transparent Pricing (simple, honest) -->
-  <section style="background:#fafafa;">
-    <div class="container">
-      <h2>Tax Filing Rate Transparency</h2>
-      <p class="pill">Fees below are tax preparation fees and do not include software or bank fees.</p>
-      <div class="grid-2" style="margin-top:16px;">
-        <div class="card price">
-          <h3>Personal Returns</h3>
-          <p><strong>Individual:</strong> $309</p>
-          <p><strong>Students:</strong> $199</p>
-          <p><strong>Married:</strong> $459+</p>
-          <p>+ $25 for each dependent<br>+ $25 for each added W-2</p>
-        </div>
-        <div class="card price">
-          <h3>Self-Employed</h3>
-          <p><strong>Individual:</strong> $399+</p>
-          <p><strong>Married:</strong> $599+</p>
-          <p>+ $25 for each dependent<br>+ $25 for each added W-2</p>
-        </div>
-      </div>
-
-      <div style="margin-top:18px;">
-        <a class="cta" href="https://www.cognitoforms.com/MPICTaxSolutions/StartYour2025TaxFilingWithMPIC" target="_blank" rel="noopener">Start Your Return</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Optional promo banner (replace the src with any promo graphic URL or another repo image) -->
-  <!-- <section>
-    <div class="container">
-      <img class="rounded" src="IMG_1845.jpeg" alt="MPIC Promotion">
-    </div>
-  </section> -->
-
-  <!-- Contact -->
-  <section>
-    <div class="container card contact">
-      <h2>Contact Us</h2>
-      <p>📞 817-713-2944</p>
-      <p>✉️ mpicllc@outlook.com</p>
-      <p>🕘 Mon–Fri: 10am–7pm</p>
-    </div>
-  </section>
 
   <footer>
-    © 2025 MPIC Financial Services. All rights reserved.
+    © 2025 MPIC Financial Services. All rights reserved.  
+    Need help? Email <a href="mailto:mpicllc@outlook.com">mpicllc@outlook.com</a>
   </footer>
+
+  <!-- ===== Simple estimator logic ===== -->
+  <script>
+    function calculateEstimate(){
+      const income = parseFloat(document.getElementById('income').value || '0');
+      const dependents = parseInt(document.getElementById('dependents').value || '0', 10);
+      const status = document.getElementById('status').value;
+
+      if(isNaN(income) || income <= 0){
+        document.getElementById('estimateNumber').textContent = '$0';
+        return;
+      }
+
+      // ---- Very rough estimate (you can tweak these numbers) ----
+      let base;
+
+      if(income <= 20000){
+        base = income * 0.15;
+      }else if(income <= 40000){
+        base = income * 0.12;
+      }else if(income <= 70000){
+        base = income * 0.08;
+      }else{
+        base = income * 0.05;
+      }
+
+      const childCredit = dependents * 800; // adjust per child amount if you want
+
+      if(status === 'hoh'){
+        base += 500;
+      }else if(status === 'married'){
+        base += 800;
+      }
+
+      let estimate = Math.max(0, Math.round(base + childCredit));
+
+      document.getElementById('estimateNumber').textContent =
+        '$' + estimate.toLocaleString('en-US');
+    }
+  </script>
 </body>
 </html>
